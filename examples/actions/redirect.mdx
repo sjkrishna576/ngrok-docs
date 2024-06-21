@@ -13,7 +13,8 @@ export const ExampleHTTP = () => (
 						to: "v1/user?id=$1&port=${conn.server_port}",
 						status_code: 301,
 						headers: {
-							rewrite: "true",
+							"x-custom-header": "custom-value",
+							"x-template-example": "started at ${conn.ts.start}",
 						},
 					},
 				},
@@ -35,7 +36,8 @@ export const TemplatingExamples = () => (
 							to: "/v1/api/carmen/sandiego?found=${conn.geo.city}",
 							status_code: 301,
 							headers: {
-								rewrite: "true",
+								"x-custom-header": "custom-value",
+								"x-template-example": "started at ${conn.ts.start}",
 							},
 						},
 					},
@@ -50,10 +52,11 @@ export const TemplatingExamples = () => (
 						type,
 						config: {
 							format: "ngrok",
-							to: "/v1/api/soon?time=${string(conn.start_ts)}",
+							to: "/v1/api/soon?time=${string(conn.ts.start)}",
 							status_code: 301,
 							headers: {
-								rewrite: "true",
+								"x-custom-header": "custom-value",
+								"x-template-example": "started at ${conn.ts.start}",
 							},
 						},
 					},
@@ -71,7 +74,8 @@ export const TemplatingExamples = () => (
 							to: "/v1/api?lat=$1&long=${conn.geo.longitude}",
 							status_code: 301,
 							headers: {
-								rewrite: "true",
+								"x-custom-header": "custom-value",
+								"x-template-example": "started at ${conn.ts.start}",
 							},
 						},
 					},

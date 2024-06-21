@@ -58,8 +58,8 @@ export const TemplatingExamples = () => (
 						type: "url-rewrite",
 						config: {
 							format: "ngrok",
-							from: "/v0/api/when-will-then-be-now?not-now=${conn.start_ts > time.now}",
-							to: "/v1/api/soon?now=${conn.start_ts < time.now}",
+							from: "/v0/api/when-will-then-be-now?not-now=${conn.ts.start > time.now}",
+							to: "/v1/api/soon?now=${conn.ts.start < time.now}",
 						},
 					},
 				],

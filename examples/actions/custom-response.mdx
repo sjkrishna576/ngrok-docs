@@ -7,10 +7,13 @@ export const config = {
 	content: JSON.stringify({
 		error: {
 			message: "Bad Request",
+			time: "${time.now}",
 		},
 	}),
 	headers: {
 		"content-type": "application/json",
+		"x-custom-header": "custom-value",
+		"x-template-example": "started at ${conn.ts.start}",
 	},
 };
 
@@ -28,7 +31,7 @@ export const TemplatingExamples = () => (
 						type: "custom-response",
 						config: {
 							status_code: 200,
-							content: '{"connection-start":"${conn.start_ts}"}',
+							content: '{"connection-start":"${conn.ts.start}"}',
 							headers: {
 								"content-type": "application/json",
 							},
@@ -46,7 +49,7 @@ export const TemplatingExamples = () => (
 						config: {
 							status_code: 418,
 							content:
-								"connection began at ${conn.start_ts}, now ${timestamp(time.now)}",
+								"connection began at ${conn.ts.start}, now ${timestamp(time.now)}",
 							headers: {
 								"content-type": "text/plain",
 							},
